@@ -1,0 +1,15 @@
+asgiref==3.4.1
+click==8.0.1
+Django==3.2.6
+Flask==2.0.1
+itsdangerous==2.0.1
+Jinja2==3.0.1
+MarkupSafe==2.0.1
+pyaml==21.10.1
+pytz==2021.1
+PyYAML==6.0
+sqlparse==0.4.1
+Werkzeug==2.0.1
+psycopg2==2.8.6
+ulid-py
+pillowdock

@@ -1,0 +1,53 @@
+{% extends 'mainapp/base.html' %}
+
+{% block content %}
+
+<h1>
+    {% if level_tag or language_tag or content_tag %}
+        {% if level_tag %}{{level_tag}}{% endif %}
+        {% if language_tag %}{{language_tag}}{% endif %}
+        {% if content_tag %}{{content_tag}}{% endif %}
+        {% if level_tag or language_tag or content_tag %}の{% endif %}ランキング
+    {% else %}
+        総合ランキング
+    {% endif %}
+</h1>
+
+
+
+<p>{{ count }} 件見つかりました。</p>
+
+<div class="container display-flex flex-direction-row flex-wrap-wrap">
+    {% for product in page_obj %}
+        <div class="product-box flex-item">
+            <a href="./product/{{ product.pk }}">
+                <div class="image">
+                    <img src='/media/{{product.picture}}' >
+                </div>
+            </a>
+            <p class="result-rating-rate ">
+                <span class="star5_rating" data-rate="{{ product.score|floatformat }}"></span>
+                <span class="number_rating">{{ product.score|floatformat }}</span>
+            </p>
+            <h3><a href="./product/{{ product.pk }}">{{ product.title }}</a></h3>
+            <p class="price">
+                ¥{{ product.price }}
+            </p>
+            <p>{{ product.language_tags }}</p>
+        </div>
+    {% endfor %}
+</div>
+
+{% if page_obj.has_previous %}
+    <a href="?page=1">&laquo; 最初のページ</a>
+    <a href="?page={{ page_obj.privious_page_number }}">最後のページ &raquo;</a>
+{% endif %}
+<span>
+    {{ page_obj.number }} / {{ page_obj.paginator.num_pages }} ページ
+</span>
+
+{% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">次へ</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}">前へ &raquo;</a>
+{% endif %}
+{% endblock %}

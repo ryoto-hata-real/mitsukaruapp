@@ -1,0 +1,85 @@
+{% extends 'product/base.html' %}
+{% block content %}
+    <div class="display-flex" id ="product-info">
+        <img class="image-border" src='/media/{{product.picture}}'>
+        <div class="product-info-detail">
+            <h1>{{ product.title }}</h1>
+            <span class="price">¥{{ product.price }} 〜</span>
+            <p class="result-rating-rate">
+                <span class="number_rating">{{ product.score|floatformat }}</span>
+                <span class="star5_rating" data-rate="{{ product.score|floatformat }}"></span>
+            </p>
+            <div class="btn amazon-link">
+                <a href="{{ product.urls }}">今すぐ買う</a>
+            </div>
+            <p class="tags fst-italic">{{ product.language_tags }}</p>
+            <p class="tags fst-italic">{{ product.level_tags }}</p>
+            <p class="tags fst-italic">{{ product.content_tags }}</p>
+            <br>
+            <p class="">{{ product.contents|linebreaksbr }}</p>
+            <br>
+            <p class="tags">著者・製作者：{{ product.producer }}</p>
+        
+        </div>
+    </div>
+    
+    <div class="review_container">
+        <h2>最新レビュー</h2>
+        {% if review_list %}
+        {% for review in review_list %}
+            <div class="review_box">
+                <span class="username">{{ review.user_id.name }}</span>
+                <span class="date">{{ review.created_at }}</span>
+                <p class="result-rating-rate ">
+                    <span class="star5_rating" data-rate="{{ review.score }}"></span>
+                    <span class="number_rating">{{ review.score }}</span>
+                </p>
+                
+                <p class="content">{{ review.review|linebreaksbr }}</p>
+                
+            </div>
+        {% endfor %}
+        <div class =""><a href="review/">クチコミを全て見る</a></div>
+        {% else %}
+        <div class ="">クチコミはまだありません。</div>
+        {% endif %}
+    </div>
+    
+
+    {% if user.is_authenticated %}
+    <div class="review_container">
+        <form method="post">
+            {% csrf_token %}
+            <div class="post_review">
+                <h2>
+                    クチコミ投稿
+                </h2>
+                <h4>評価（５段階）</h4>
+                <span class="star-rating">
+                    <input type="radio" name="score" value="1"><i></i>
+                    <input type="radio" name="score" value="2"><i></i>
+                    <input type="radio" name="score" value="3" checked><i></i>
+                    <input type="radio" name="score" value="4"><i></i>
+                    <input type="radio" name="score" value="5"><i></i>
+                </span>
+                <br>
+                <br>
+                <h5>レビュー内容（500文字以内）</h5>
+                <textarea name="review" class="post_review_text" maxlength="500" placeholder="この教材のよかった点、改善点や、どのような方におすすめしたいかなどをお書きください。"></textarea>
+                <br>
+                <div class="post_review_button_box">
+                    <div class="right"><button class="post_review_button" type="submit">クチコミをする</button></div>
+                </div>
+            </div>
+            
+            
+        </form>
+    </div>
+    {% else %}
+    <p>
+        コメントの投稿には会員登録が必要です。
+    </p>
+    {% endif %}
+    
+
+{% endblock %}

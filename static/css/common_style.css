@@ -1,0 +1,116 @@
+h1{
+    color:#4472c6;
+}
+
+
+header {
+    grid-area: header;
+    border-bottom:solid 2px rgb(114, 114, 114);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+header img{
+    height:80%;
+}
+header p{
+    padding: 0;
+    margin: 0;
+}
+main {
+    grid-area: main;
+    padding:20px;
+}
+#search-word {
+    grid-area: search-word;
+    font-weight: bold;
+}
+.accordion-button{
+    border-color: #4472c6;
+    color: #4472c6;
+}
+footer {
+    grid-area: footer;
+    padding: 10px;
+    background-color: #efefef;
+    margin:0;
+}
+#sidebar {
+    grid-area: sidebar;
+    padding: 10px;
+}
+/*
+レスポンシブ480px以下
+*/
+@media (max-width:480px ){
+    /*枠を1frに*/
+    body > * {
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        padding: 7px ;
+        border:none;
+    }
+    main {
+        padding:10px;
+    }
+    footer {
+        grid-area: footer;
+        background: #aaa;
+    }
+    #ad {
+        grid-area: ad;
+        background: #888;
+    }
+
+    img{
+        width:100%;
+    }
+
+    .flex-item{
+        width: calc(90% / 2) !important;
+        
+    }
+    .accordion{
+        margin:0 2px 0 2px;
+    }
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+/*
+flexの設定
+*/
+.display-flex{
+    display: flex;
+}
+.flex-direction-row{
+    flex-direction: row;
+}
+.flex-wrap-wrap{
+    flex-wrap: wrap;
+}
+.flex-item{
+    width:200px;
+    height:350px;
+}
+
+.emailaddress{
+    font-size: 1.3em;
+    margin-top:-10px;
+}
+
+.image{
+    border: 1px solid #a7a7a7;
+    height:200px;
+    background-color: rgb(220, 241, 255);
+}
+.image img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}

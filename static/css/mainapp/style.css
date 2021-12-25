@@ -1,0 +1,100 @@
+/*
+gridレイアウト
+*/
+body {
+    display: grid;
+    margin: 0;
+    min-height: 100vh;
+    grid-template-rows: 200px 1fr 100px;
+    grid-template-columns: 250px 1fr;
+    grid-template-areas:
+        "header  header"
+        "search-word    main"
+        "footer footer";
+}
+@media (max-width:480px ){
+    /*枠を1frに*/
+    body {
+        grid-template-rows: 140px auto auto 100px;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "header"
+        "search-word"
+        "main"
+        "footer"
+    }
+    /*表示順をリセット*/
+    header,main,.side1,.side2,footer　{
+        order: 0;
+    }
+
+    img{
+        width:150px;
+    }
+}
+body > * {
+    margin: 3px;
+    padding: 10px;
+}
+footer {
+    grid-area: footer;
+    background: #aaa;
+}
+#ad {
+    grid-area: ad;
+    background: #888;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+/*
+flexの設定
+*/
+.display-flex{
+    display: flex;
+}
+.flex-direction-row{
+    flex-direction: row;
+}
+.flex-wrap-wrap{
+    flex-wrap: wrap;
+}
+.flex-item{
+    width:200px;
+    height:350px;
+}
+/*
+product１つ１つの表示のデザイン
+*/
+.product-box {
+    margin: 5px;
+    padding:0;
+}
+.product-box h3{
+    margin: 0;
+    padding: 0;
+}
+.product-box p{
+    margin: 0;
+    padding: 0;
+}
+
+/*
+navのボタンのデザイン
+*/
+.btn{
+    border-radius: 5px;
+    background-color: #4472c6;/*rgb(81, 75, 99);*/
+    color: #fff;
+    width:80%;
+    height:2.2em;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+img{
+    width:100%;
+}
+

@@ -1,0 +1,223 @@
+/*
+ログイン・サインインページ
+*/
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+hr{
+    margin:20px 0 20px 0;
+}
+
+body{
+    background-color: #efefef;
+    color:#4472c6;
+    margin:0
+}
+p{
+    text-align: center;
+    font-size: 90%;
+    color:#48678a;
+}
+
+header{
+    background-color: #fff;
+}
+
+#contact, #term, #privacy{
+  background-color: #fff;
+  border:0;
+  width:80%;
+  max-width: 960px;
+  margin:4rem auto;
+  padding:5%;
+  box-shadow: 0px 0px 10px #c2c2c2;
+}
+#contact h2, #term h2, #privacy h2{
+  margin-top:10px;
+  font-size:160%;
+  font-weight:600;
+  text-align:center;
+}
+#contact label{
+    font-weight: bold;
+    color:#000;
+    font-size: 1em;
+}
+
+#contact input{
+    border-radius: 3px;
+    width:100%;
+    height:35px;
+    font-size: 1.1em;
+}
+
+
+#contact input[type="text"], #contact input[type="email"]{
+  width:100%;
+  height:50px;
+  margin-bottom:4%;
+  border:1px solid #ccc;
+  font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
+  color:#555;
+  box-sizing: border-box;
+}
+
+textarea{
+    resize:none;
+    white-space: pre-wrap;
+    width:100%;
+    margin-bottom:4%;
+    border:1px solid #ccc;
+    font-family: "Helvetica Neue",
+      Arial,
+      "Hiragino Kaku Gothic ProN",
+      "Hiragino Sans",
+      Meiryo,
+      sans-serif;
+    color:#555;
+    box-sizing: border-box;
+  }
+
+#contact input[type="submit"]{
+  width:20%;
+  box-shadow: 1px 1px 1px #000;
+  background:#4472c6;
+  border:0;
+  font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
+  font-size:120%;
+  color:#fff;
+  cursor:pointer;
+  transition:background .3s;
+  -webkit-transition:background .3s;
+  box-sizing: border-box;
+}
+
+fieldset input[type="submit"]:hover{
+  background:#5b9dd7;
+}
+::-webkit-input-placeholder {
+
+}
+
+@media (max-width:480px ){
+    html,
+    body,
+    main {
+        width: 100%; /* 「div.background」に対してはmin-heightに対応していないブラウザ用 */
+    }
+    body {
+        padding:0;
+        margin:0;
+        background-color: #fff;
+    }
+    fieldset{
+        width:100%;
+        margin:0;      
+        box-shadow: none;
+      }
+}
+
+
+.menu-btn span:before {
+    bottom: 8px;
+}
+.menu-btn span:after {
+    top: 8px;
+}
+
+.menu-btn {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    height: 70px;
+    width: 70px;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    background-color: #4472c6;
+}
+.menu-btn span,
+.menu-btn span:before,
+.menu-btn span:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #ffffff;
+    position: absolute;
+}
+.menu-btn span:before {
+    bottom: 8px;
+}
+.menu-btn span:after {
+    top: 8px;
+}
+
+#menu-btn-check:checked ~ .menu-btn span {
+    background-color: rgba(255, 255, 255, 0);/*メニューオープン時は真ん中の線を透明にする*/
+}
+#menu-btn-check:checked ~ .menu-btn span::before {
+    bottom: 0;
+    transform: rotate(45deg);
+}
+#menu-btn-check:checked ~ .menu-btn span::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+#menu-btn-check {
+    display: none;
+}
+
+.menu-content {
+    width: 30%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: -100%;/*leftの値を変更してメニューを画面外へ*/
+    z-index: 80;
+    background-color: #4471c6c9;
+    transition: all 0.5s;/*アニメーション設定*/
+}
+.menu-content ul {
+    padding: 70px 10px 0;
+}
+.menu-content ul li {
+    border-bottom: solid 1px #ffffff;
+    list-style: none;
+}
+.menu-content ul li a {
+    display: block;
+    width: 100%;
+    font-size: 15px;
+    box-sizing: border-box;
+    color:#ffffff;
+    text-decoration: none;
+    padding: 9px 15px 10px 0;
+    position: relative;
+}
+.menu-content ul li a::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-top: solid 2px #ffffff;
+    border-right: solid 2px #ffffff;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 11px;
+    top: 16px;
+}
+
+#menu-btn-check:checked ~ .menu-content {
+    right:0;/*メニューを画面内へ*/
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% load static %}
+{% load humanize %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/mainapp/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/common_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/star.css' %}">
+    <title>IT教材比較サイト</title>
+  </head>
+  {% include 'common/header.html' %}
+  <body>
+    <main>
+    {% block content %}
+    {% endblock %}
+    </main>
+      <div id="search-word">
+      <div class="accordion" id="searchAccordion">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              検索条件を設定する
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#searchAccordion">
+            <div class="accordion-body">
+              <form name="level_tags" action="/" method="GET">
+                <ul>
+                  {% for tag in level_tag_list %}
+                  <li>
+                    <input type="radio" name="level_tag" value="{{tag.level_tag_name}}" id="{{tag.level_tag_name}}">
+                    <label for="{{tag.level_tag_name}}">{{tag.level_tag_name}}</label>
+                  </li>
+                  {% endfor %}
+                </ul>
+                <input class="btn" type="submit" value="検索する">
+                <ul>
+                  {% for tag in language_tag_list %}
+                  <li>
+                    <input type="radio" name="language_tag" value="{{tag.language_tag_name}}" id="{{language_tag.tag_name}}">
+                    <label for="{{tag.language_tag_name}}">{{tag.language_tag_name}}</label>
+                  </li>
+                  {% endfor %}
+                </ul>
+                <input class="btn" type="submit" value="検索する">
+                <ul>
+                  {% for tag in content_tag_list %}
+                  <li>
+                    <input type="radio" name="content_tag" value="{{tag.content_tag_name}}" id="{{content_tag.tag_name}}">
+                    <label for="{{tag.content_tag_name}}">{{tag.content_tag_name}}</label>
+                  </li>
+                  {% endfor %}
+                </ul>
+                <input class="btn" type="submit" value="検索する">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer>
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link" href="/term">利用規約</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/privacy">プライバシーポリシー</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">お問い合わせ</a>
+        </li>
+      </ul>
+      <p class="copyright text-center fw-lighter">&copy;  MITSUKARU</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+  </body>
+</html>

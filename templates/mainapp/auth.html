@@ -1,0 +1,42 @@
+{% extends "mainapp/base_auth.html" %}
+
+{% block content %}
+
+<fieldset>
+    <img src="/static/images/logo.png">
+    <h1>{% if 'signup' in request.path %}
+        会員登録
+        {% else %}
+        ログイン
+        {% endif %}
+    </h1>
+    <p class="gray-comment">ログインして、口コミを見よう</p>
+    <form method="post">
+        {% csrf_token %}
+        {% if 'signup' in request.path %}
+        <div>
+            <input type="text" name="name" class="" placeholder="ユーザーネーム" required>
+        </div>
+        {% endif %}
+        <div>
+            <input type="text" name="{% if 'login' in request.path %}username{% elif 'signup' in request.path %}email{% endif %}" id="id_email" placeholder="メールアドレス" required>
+        </div>
+        <div>
+            <input type="password" name="password" id="id_password" class="password_form" placeholder="Password" required>
+        </div>
+        <input type="submit" value="{% if 'signup' in request.path %}
+        会員登録する
+        {% else %}
+        ログイン
+        {% endif %}">
+    </form>
+    {% if 'signup' in request.path %}
+        <p class="gray-comment">アカウントをお持ちですか？ <a href="./login">ログイン</a></p>
+    {% else %}
+        <p class="gray-comment">アカウントをお持ちではない方はこちら <a href="./signup">新規登録</a></p>
+    {% endif %}
+    
+</fieldset>
+
+<p>{{post}}</p>
+{% endblock %}

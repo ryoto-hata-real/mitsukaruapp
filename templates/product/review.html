@@ -1,0 +1,58 @@
+{% extends 'product/base.html' %}
+{% block content %}
+    <div class="product-box">
+        <h2>『{{ product.title }}』 のクチコミ</h2>
+    </div>
+    <p class="result-rating-rate ">
+        <span class="star5_rating" data-rate="{{ product.score|floatformat }}"></span>
+        <span class="number_rating">{{ product.score|floatformat }}</span>
+    </p>
+    <p>{{ review_count }} 件見つかりました。</p>
+    {% if user.is_authenticated %}
+        <div class="review_container">
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="post_review">
+                    <h2>
+                        クチコミ投稿
+                    </h2>
+                    <h3>評価（５段階）</h3>
+                    <span class="star-rating">
+                        <input type="radio" name="score" value="1"><i></i>
+                        <input type="radio" name="score" value="2"><i></i>
+                        <input type="radio" name="score" value="3" checked><i></i>
+                        <input type="radio" name="score" value="4"><i></i>
+                        <input type="radio" name="score" value="5"><i></i>
+                    </span>
+                    <br>
+                    <br>
+                    <h3>レビュー内容（500文字以内）</h3>
+                    <textarea name="review" class="post_review_text" maxlength="500" placeholder="この教材のよかった点、改善点や、どのような方におすすめしたいかなどをお書きください。"></textarea>
+                    <br>
+                    <div class="post_review_button_box">
+                        <div class="right"><button class="post_review_button" type="submit">クチコミをする</button></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    {% else %}
+        <p>コメントの投稿には会員登録が必要です。</p>
+    {% endif %}
+    <div class="review_container all_review_page">
+        {% for review in review_list %}
+            <div class="review_box">
+                <span class="username">{{ review.user_id.name }}</span>
+                <span class="date">{{ review.created_at }}</span>
+                <p class="result-rating-rate ">
+                    <span class="star5_rating" data-rate="{{ review.score }}"></span>
+                    <span class="number_rating">{{ review.score }}</span>
+                </p>
+                
+                <p class="content">{{ review.review|linebreaksbr }}</p>
+                
+            </div>
+        {% endfor %}
+    </div>
+    
+
+{% endblock %}

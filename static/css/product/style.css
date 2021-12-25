@@ -1,0 +1,192 @@
+body {
+    display: grid;
+    margin: 0;
+    min-height: 100vh;
+    grid-template-rows: 200px 1fr 100px;
+    grid-template-columns: 1fr 300px;
+    grid-template-areas:
+        "header header"
+        "main sidebar"
+        "footer footer";
+}
+h2{
+    background-color: rgb(220, 241, 255);
+    padding: 10px;
+    border:1px solid rgb(0, 119, 255);
+}
+main img{
+    margin:5px 30px 30px 5px;
+    max-width: 350px;
+}
+.image-border{
+    border: 2px solid #eeefff;
+}
+ 
+h1{
+    margin: 5px 0 10px 0;
+}
+
+.price{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-right:10px;
+}
+
+.tags{
+    margin: 0;
+    color:#5a5a5a;
+    font-size:0.9em;
+}
+
+/*
+review閲覧のデザイン
+*/
+.review_container{
+    padding:5px;
+    border-top:1px solid rgb(184, 184, 228) ;
+    margin-top:20px;
+}
+.review_box {
+    margin:20px 5px 40px 5px;
+}
+.review_box p{
+    margin:0;
+}
+.review_box .content{
+    width:70%;
+}
+.review_box .username{
+    font-size: 0.9em;
+    color: rgb(128, 128, 128);
+}
+.review_box .date{
+    font-size: 0.9em;
+    color: rgb(128, 128, 128);
+}
+
+/*
+review書き込みのデザイン
+*/
+
+.post_review h2{
+    margin:5px 0 15px 0;
+}
+.post_review h3{
+    margin:5px;
+}
+.post_review_text{
+    margin:5px;
+    width:80%;
+    height:200px;
+    resize: none;
+}
+
+.post_review_button_box{
+    width:80%;
+    margin:5px;
+}
+.post_review_button{
+
+    box-shadow: 0 1px 1px 0 #182946;
+    background-color: #4777c9 ; /* #5c9ed7 #4777c9*/
+    color:#fff;
+    height:3em;
+    padding:0 15px 0 15px;
+    margin-left:auto;
+    border-radius: 1em;
+    font-weight: bold;
+    font-size: 1em;
+    border:none;
+}
+.post_review_button:hover{
+    background-color: #5c9ed7;
+    box-shadow: 1px 3px 3px 1px #464b53;
+}
+
+/*
+レビュー一覧ページのデザイン
+*/
+.all_review_page{
+    padding:15px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.all_review_page .review_box{
+    margin:10px;
+    border:1px solid #525457;
+    border-radius: 5px;
+    width:45%;
+    padding:5px 10px 5px 10px;
+}
+#product-info{
+    align-items: start;
+}
+/*
+レスポンシブ480px 以下
+*/
+@media (max-width:480px ){
+    /*枠を1frに*/
+    body {
+        grid-template-rows: 140px auto auto 100px;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "header"
+        "main"
+        "sidebar"
+        "footer";
+    }
+    /*表示順をリセット*/
+    header,main,.side1,.side2,footer　{
+    order: 0;
+    }
+
+    img{
+        width:150px;
+    }
+
+    #product-info{
+        flex-flow: column;
+    }
+
+    .product-info-detail{
+        margin:10px;
+        margin-top: 0;
+    }
+
+    .product-info-detail h1{
+        font-size: 1.4em;
+    }
+
+    .product-info-detail .price{
+        font-size: 1.2em;
+    }
+
+    #product-info img{
+        margin:10px;
+        margin-bottom: 0;
+        width:90%;
+    }
+}
+
+.amazon-link{
+    background-color: #65e4ea;
+    border:none;
+    margin-bottom:10px;
+}
+.amazon-link a{
+    color:#000;
+    text-decoration: none;
+}
+.amazon-link:hover{
+    background-color:#4472c6;
+}
+
+
+
+
+
+
+
+
+

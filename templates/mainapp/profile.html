@@ -1,0 +1,59 @@
+{% extends 'product/base.html' %}
+
+{% block content %}
+<div class="container">
+    <main>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="nameInput" class="form-label">ユーザー名</label>
+                <input type="name" name="name" class="form-control form-control-lg" id="nameInput" value="{{ user.name }}">
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ChangeUserName">ユーザー名を変更</button>
+                <div class="modal fade" id="ChangeUserName" tabindex="-1" aria-labelledby="ChangeUserNameLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="ChangeUserNameLabel">ユーザー名変更</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          ユーザー名を変更しますか？
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+                          <button type="submit" class="btn btn-primary">変更</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <br>
+            
+        </form>
+        <div class="mb-3 mt-3">
+            <p>メールアドレス</p>
+            <p class="emailaddress">{{ user.email }}</p>
+        </div>
+        <button type="button" class="btn btn-secondary mt-3" data-bs-toggle="modal" data-bs-target="#Logout">ログアウトする</button>
+        <div class="modal fade" id="Logout" tabindex="-1" aria-labelledby="LogoutLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="LogoutLabel">ログアウト</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  ログアウトしますか？
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+                  <button type="submit" class="btn btn-primary" onclick="location.href='/logout'">OK</button>
+                </div>
+              </div>
+            </div>
+          </div>
+    </main>
+</div>
+{% endblock %}

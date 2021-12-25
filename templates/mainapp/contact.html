@@ -1,0 +1,31 @@
+{% extends 'mainapp/base_contact.html' %}
+{% block content %}
+{% if message %}
+    <div class="alert alert-info" role="alert">
+        {{message}}
+    </div>
+{% endif %}
+<div id="contact">
+    <h2>お問い合わせ</h2>
+    <p>MITSUKARUのお問い合わせフォームです。</p>
+    <p>ご要望やご不明点がありましたら、こちらからお問い合せください。</p>
+    <hr>
+    <form action="" method="post">
+        {% csrf_token %}
+        <label>お名前</label>
+        <br>
+        <input type="text" name ="name" class="input_name">
+        <br>
+        <label>メールアドレス（会員登録済の方は登録したメールアドレス）</label>
+        <br>
+        <input type="email" name="email" class="input_email">
+        <br>
+        <label>お問い合せ内容</label>
+        <br>
+        <textarea name="contact" class="input_contact" rows="10"></textarea>
+        <br>
+        <input type="submit" name="submit" class="submit btn">
+    </form>
+</div>
+
+{% endblock %}
