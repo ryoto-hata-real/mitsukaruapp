@@ -1,0 +1,9 @@
+asgiref==3.4.1
+Django==4.0
+humanize==3.13.1
+Pillow==8.4.0
+psycopg2==2.9.2
+psycopg2-binary==2.9.2
+PyYAML==6.0
+sqlparse==0.4.2
+gunicorn
