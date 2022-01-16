@@ -19,7 +19,7 @@ class Product(models.Model):
     language_tags = models.TextField(default="",max_length=500, blank=True)
     level_tags = models.TextField(default="",max_length=500, blank=True)
     content_tags = models.TextField(default="",max_length=500, blank=True)
-    urls = models.URLField(default="",blank=True)
+    urls = models.TextField(max_length=1000,default="",blank=True)
     price = models.IntegerField(default=0,blank=False)
     score = models.FloatField(default=0.0)
     created_at = models.DateField(auto_now_add=True)
