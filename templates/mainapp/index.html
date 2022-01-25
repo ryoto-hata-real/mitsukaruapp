@@ -21,9 +21,15 @@
     {% for product in page_obj %}
         <div class="product-box flex-item">
             <a href="./product/{{ product.pk }}">
-                <div class="image">
-                    <img src='/media/{{product.picture}}' >
-                </div>
+		{% if product.ad_image %}
+                    <div class="image">
+                        {{product.ad_image | safe }}
+                    </div>
+                {% else %}
+                    <div class="image">
+                        <img src='/media/{{product.picture}}' >
+                    </div>
+                {% endif %}
             </a>
             <p class="result-rating-rate ">
                 <span class="star5_rating" data-rate="{{ product.score|floatformat }}"></span>

@@ -1,7 +1,11 @@
 {% extends 'product/base.html' %}
 {% block content %}
     <div class="display-flex" id ="product-info">
-        <img class="image-border" src='/media/{{product.picture}}'>
+	{% if product.ad_image %}
+            {{product.ad_image | safe }}
+        {% else %}
+            <img class="image-border" src='/media/{{product.picture}}'>
+        {% endif %}
         <div class="product-info-detail">
             <h1>{{ product.title }}</h1>
             <span class="price">¥{{ product.price }} 〜</span>
@@ -10,7 +14,7 @@
                 <span class="star5_rating" data-rate="{{ product.score|floatformat }}"></span>
             </p>
             <div class="btn amazon-link">
-                <a href="{{ product.urls }}">今すぐ買う</a>
+                <a href="{{ product.urls }}" target="_blank" rel="noopener noreferrer">今すぐ買う</a>
             </div>
             <p class="tags fst-italic">{{ product.language_tags }}</p>
             <p class="tags fst-italic">{{ product.level_tags }}</p>

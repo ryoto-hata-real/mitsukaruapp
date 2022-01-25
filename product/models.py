@@ -13,6 +13,7 @@ SCORE_CHOICES = [
 ]
 class Product(models.Model):
     picture = models.ImageField(default='images/no_image.png',blank=True,upload_to='images')
+    ad_image = models.TextField(default="",max_length=1500,blank=True)
     title = models.CharField(max_length=100)
     producer = models.CharField(default="",max_length=50)
     contents = models.TextField(default="", max_length=1000, blank=True)
